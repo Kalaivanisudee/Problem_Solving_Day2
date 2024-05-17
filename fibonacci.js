@@ -12,3 +12,16 @@ F(5)=F(5-1)+F(5-2)=F(4)+F(3)==>3+2=5
 Iterative approach
 In order to get the next value in the sequence, we have to add last two element in the sequence.
 */
+function fibonacci(n){
+if(n==0)return 0;
+if(n==1)return 1;
+let previous=0;
+let current=1;
+for(let i=2; i<=n;i++){
+    let next=previous+current;
+    previous=current;
+    current=next;
+}
+return current;
+}
+console.log(fibonacci(10))//5
