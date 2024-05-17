@@ -18,10 +18,9 @@ if(n==1)return 1;
 let previous=0;
 let current=1;
 for(let i=2; i<=n;i++){
-    let next=previous+current;
-    previous=current;
-    current=next;
+   current=previous+current;//0+1=>1//1+1=>2//1+2=>3//2+3=>5//3+5=>8//5+8=>13 current=13
+   previous=current-previous;//1-0=>1//2-1=>1;//3-1=>2;//5-2=>3//8-3=>5//13-5=>8 previous=8
 }
 return current;
 }
-console.log(fibonacci(10))//5
+console.log(fibonacci(7))//5
