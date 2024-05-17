@@ -1,43 +1,28 @@
-
-// What is anagram?
-// An Anagram of a string is another string that contains the same characters, only the order of characters can be different.
-//
 let string1="listen";
 let string2="silent";
-function isAnagram(string1,string2){
-    let myObj={}
-    for(let i=0;i<string1.length;i++){
-        if(string1[i] >= "a" && string1[i] <= "z"){//Check the character a to Z.It avoiding numbers and special character.
-            if(myObj[string1[i]]){
-                myObj[string1[i]] +=1
-            }else {
-                myObj[string1[i]]=1;
-            }
+console.log(string1.charCodeAt(0));//108 //L ASCII
+console.log(string2.charCodeAt(0));//115 //L ASCII
+let arr=Array.from({length:256},()=>0);
+// console.log(...arr); // 256 index filled with value 0
+console.log(arr[string1.charCodeAt(0)]++); //108:1 =>Debugging output
+console.log(arr[string2.charCodeAt(0)]--); //115:-1 =>Debugging output
 
-        }else {
-            return false;
-        }
+console.log(arr[string1.charCodeAt(1)]++); //105:1
+console.log(arr[string2.charCodeAt(1)]--);//105:-1 //0
 
-    }
-    for(let i=0;i<string2.length;i++){
-        if(string2[i] >= "a" && string2[i] <= "z"){
-            if(myObj[string2[i]]){
-                myObj[string2[i]] -=1
-                if(myObj[string2[i]]==0){
-                    delete myObj[string2[i]]
-                }
-            }else{
-                return false;
-            }
-            
+console.log(arr[string1.charCodeAt(2)]++); //115:1
+console.log(arr[string2.charCodeAt(2)]--);//108:-1
 
-        }
+console.log(arr[string1.charCodeAt(3)]++); //116:1
+console.log(arr[string2.charCodeAt(3)]--);//101:-1
 
-    }
-    console.log(myObj);
- return Object.keys(myObj).length==0;
-}
-console.log(isAnagram(string1,string2))
+console.log(arr[string1.charCodeAt(4)]++); //101:1
+console.log(arr[string2.charCodeAt(4)]--);//110:-1
 
+console.log(arr[string1.charCodeAt(5)]++); //110:1
+console.log(arr[string2.charCodeAt(5)]--);//116:-1
 
-
+let filterArray=arr.filter((value)=>value !=0)
+console.log(filterArray);//[]
+console.log(filterArray.length);//0
+console.log(filterArray.length==0);//true
